@@ -22,4 +22,5 @@ Route::get('/home', 'HomeController@index');
 Route::group(['prefix' => 'resource', 'middleware' => 'auth'], function() {
     Route::get('create_resource', 'ResourceController@index');
     Route::post('store_resource', 'ResourceController@store_resource');
+    Route::get('create_resource_form', 'ResourceController@store_resource');
 });

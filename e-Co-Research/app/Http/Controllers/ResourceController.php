@@ -14,6 +14,9 @@ class ResourceController extends Controller
         return view('resource.create_resource');
     }
 
+    /**
+     * @return mixed
+     */
     public function store_resource() {
         $resource = new Resource;
 
@@ -23,12 +26,17 @@ class ResourceController extends Controller
                 $heading_module = new HeadingModule;
                 $heading_module->content = $heading_modules[$i];
                 $heading_module->resource_id = $resource->id;
-
-                if ($resource->save() && $resource->heading_modules()->save($heading_module)) {
+                if ($resource->save() && $resource->heading_module()->save($heading_module)) {
                 } else {
                     return Redirect::back()->withInput()->withErrors('Save Failed！');
                 }
             }
         }
+        $resource_id = $resource->id;
+        return view('resource.create_resource_form')->withPage(Resource::find($resource_id));
+    }
+
+    public function create_resource_form($resource_id) {
+
     }
 }

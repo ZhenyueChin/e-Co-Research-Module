@@ -21,7 +21,7 @@ class Resource extends Model
         return $this->hasOne('App\FormSpecification');
     }
 
-    public function heading_modules(){
-        return $this->hasMany('App\HeadingModule');
+    public function heading_module(){
+        return $this->hasOne('App\HeadingModule');
     }
 }
